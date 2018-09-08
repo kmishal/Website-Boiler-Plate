@@ -6,14 +6,14 @@ var sass = require ('gulp-sass');
 // ? So below  plugin is commented
 //var browserSync = require('browser-sync').create();
 
-// Require jade
-var jade = require('gulp-jade');
+// Require pug
+var pug = require('gulp-pug');
 
 // Gulp watch syntax
-gulp.task('watch', ['sass', 'jade', 'js'], function () {
+gulp.task('watch', ['sass', 'pug', 'js'], function () {
     gulp.watch('app/scss/**/*.scss', ['sass']);
     // Other watchers
-    gulp.watch('app/*.jade', ['jade']);
+    gulp.watch('app/*.pug', ['pug']);
     gulp.watch('app/js/*.js', ['js'] ); 
 })
 
@@ -27,9 +27,9 @@ gulp.task('sass', function () {
 });
 
 // compile jade
-gulp.task('jade', function () {
-    return gulp.src('./app/*.jade')
-        .pipe(jade()) // pip to jade plugin
+gulp.task('pug', function () {
+    return gulp.src('./app/*.pug')
+        .pipe(pug()) // pip to jade plugin
         .pipe(gulp.dest('build/')) // tell gulp our output folder
         // .pipe(browserSync.reload({
         //     stream: true
